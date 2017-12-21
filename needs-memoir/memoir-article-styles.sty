@@ -22,6 +22,17 @@
 \def\mybibind{\hangindent=1 true cm\hangafter=1 \noindent}
 
 
+
+%%% add supplemental figure and table section
+
+\newcommand{\beginsupplement}{%
+        \setcounter{table}{0}
+        \renewcommand{\thetable}{S\arabic{table}}%
+        \setcounter{figure}{0}
+        \renewcommand{\thefigure}{S\arabic{figure}}%
+}
+
+
 %%% --------------------------------------------------
 %%% Style: memo-comments
 %%% For short notes.
@@ -64,9 +75,10 @@
 %%% --------------------------------------------------
 %%% Style: article-1 
 %%% --------------------------------------------------
+% Make the style for Chapters and sections
    \makechapterstyle{article-1}{
      \setsecheadstyle{\Large\scshape} 
-     \setsubsecheadstyle{\normalsize\itshape} 
+     \setsubsecheadstyle{\normalsize\itshape}
     \renewcommand{\printchaptername}{} 
     \renewcommand{\chapternamenum}{} 
     \renewcommand{\chapnumfont}{\chaptitlefont} 
@@ -76,7 +88,9 @@
     \renewcommand{\cftchapterfont}{\normalfont} 
     \renewcommand{\cftchapterpagefont}{\normalfont\scshape} 
     \renewcommand{\cftchapterpresnum}{\scshape} 
-    %\renewcommand{\cftchapterleader}{} 
+     \counterwithout{section}{chapter}
+
+    % \renewcommand{\cftchapterleader}{} 
     %\renewcommand{\cftchapterafterpnum}{\cftparfillskip}
     \captiontitlefont{\small}
     %\settocdepth{chapter}
@@ -150,10 +164,10 @@
 %%% --------------------------------------------------
 %%% Style: article-3 
 %%% --------------------------------------------------
-
 % Make the style for Chapters and sections
    \makechapterstyle{article-3}{
-     \renewcommand\thesection{\arabic{section}} 
+     % \renewcommand\thesection{\arabic{section}} 
+     % \renewcommand\thesubsection{\arabic{subsection}} 
      \setsecheadstyle{\Large\sffamily} 
      \setsubsecheadstyle{\large\sffamily} 
      \setsubsubsecheadstyle{\normalsize\sffamily\itshape} 
@@ -169,10 +183,11 @@
     %\renewcommand{\cftchapterleader}{} 
     %\renewcommand{\cftchapterafterpnum}{\cftparfillskip}
     \captiontitlefont{\small}
-    \settocdepth{chapter}
-    \maxsecnumdepth{chapter} 
-    \setsecnumdepth{chapter}
-
+    % \settocdepth{chapter}       
+    \maxsecnumdepth{subsubsection} 
+    \setsecnumdepth{subsubsection}
+    \counterwithout{section}{chapter
+}
     % reduce skip after section heading
     \setaftersecskip{1.7ex}
     
@@ -250,6 +265,57 @@
     \renewcommand{\abstracttextfont}{\normalfont\scriptsize}
     \abstractrunin
    }
+
+
+%%% --------------------------------------------------
+%%% Style: article-gtk
+%%% --------------------------------------------------
+
+%% Make the style for Chapters and sections
+\makechapterstyle{article-gtk}{
+  \setsecheadstyle{\Large\scshape\MakeLowercase} 
+  \setsubsecheadstyle{\large\itshape} 
+  \setaftersubsubsecskip{-1em}
+  \setsubsubsecheadstyle{\small\bfseries}
+  \counterwithout{section}{chapter}
+  \renewcommand{\printchaptername}{} 
+  \renewcommand{\chapternamenum}{} 
+  \renewcommand{\chapnumfont}{\chaptitlefont} 
+  \renewcommand{\printchapternum}{\chapnumfont \thechapter\space} 
+  \renewcommand{\afterchapternum}{} 
+  \renewcommand{\printchaptername}{\secheadstyle}
+  \renewcommand{\cftchapterfont}{\normalfont} 
+  \renewcommand{\cftchapterpagefont}{\normalfont\scshape} 
+  \renewcommand{\cftchapterpresnum}{\scshape} 
+  % \renewcommand{\cftchapterleader}{} 
+  % \renewcommand{\cftchapterafterpnum}{\cftparfillskip}
+  \captionsetup{font={small,sf},labelfont=bf}
+  % \settocdepth{chapter}
+    \maxsecnumdepth{subsubsection} 
+    \setsecnumdepth{subsubsection}
+    \counterwithout{section}{chapter}
+
+  % reduce skip after section heading
+  \setaftersecskip{1.7ex}
+  
+  % set name of bibliography to 'references'
+  % \renewcommand{\bibname}{\mdseries\Large\scshape\MakeLowercase References}
+
+  % % Title flush left
+  \pretitle{\par\vskip 3em 
+    \begin{flushleft}\LARGE\bfseries}
+    \posttitle{\end{flushleft}\par\vskip 0.5em}
+  \preauthor{\begin{flushleft}\normalsize\bigskip}
+    \postauthor{\end{flushleft}}
+  \predate{\begin{flushleft}\normalsize}
+    \postdate{\end{flushleft}}
+
+  % 'abstract' bigger skip from title
+  \addto\captionsamerican{\renewcommand{\abstractname}{}}
+  \renewcommand{\abstractname}{}
+  \renewcommand{\abstracttextfont}{\normalfont\scriptsize}
+  \abstractrunin
+}
 
 
 %%% --------------------------------------------------
@@ -621,8 +687,8 @@
 \makepsmarks{kjhgit}{\@kjhgitmarks}
 %\makeevenhead{kjhgit}{\footnotesize\scshape\leftmark}{}{\scshape\thepage}
 %\makeoddhead{kjhgit}{}{}{\footnotesize\rightmark\normalsize\ \ \scshape\thepage}
-\makeevenfoot{kjhgit}{}{\scshape\thepage}{\texttt{\footnotesize \VCRevision\ on \VCDateTEX}}
-\makeoddfoot{kjhgit}{}{\scshape\thepage}{\texttt{\footnotesize \VCRevision\ on \VCDateTEX}}            
+\makeevenfoot{kjhgit}{}{\scshape\thepage}{\texttt{\footnotesize \gitAbbrevHash{} on \gitAuthorDate{}}}
+\makeoddfoot{kjhgit}{}{\scshape\thepage}{\texttt{\footnotesize \gitAbbrevHash{}  on \gitAuthorDate{}}}
 
 %%% 
 %%% Custom appendix 

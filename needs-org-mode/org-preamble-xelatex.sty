@@ -14,7 +14,6 @@
  
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{org-preamble-xelatex}[2011/02/21 v0.01 Bundling of Preamble items for Org to XeLaTeX export]
-
 \RequirePackage{ifthen}
 \newboolean{@minted} %
 
@@ -32,7 +31,7 @@
 \RequirePackage{url}
 \RequirePackage{rotating}
 \RequirePackage{memoir-article-styles}
-\RequirePackage[american]{babel}
+\RequirePackage[UKenglish]{babel}
 \RequirePackage[babel]{csquotes}
 \RequirePackage[svgnames]{xcolor}
 \RequirePackage{soul}
@@ -42,7 +41,7 @@ pdfpagelabels, bookmarksnumbered]{hyperref}
 \RequirePackage{etoolbox}
 
 %% Biblatex
-\RequirePackage[authordate, backend=biber, babel=hyphen, bibencoding=inputenc, strict, isbn=false, uniquename=false]{biblatex-chicago} % biblatex setup
+% \RequirePackage[authordate, backend=biber, babel=hyphen, bibencoding=inputenc, strict, isbn=false, uniquename=false]{biblatex-chicago} % biblatex setup
 % \RequirePackage[style=authoryear,
 %             bibstyle=authoryear,
 %             citestyle=authoryear,
@@ -56,14 +55,12 @@ pdfpagelabels, bookmarksnumbered]{hyperref}
   \printtext{\bibstring{}\intitlepunct}}}
 
 %% Basic bibliography
-\addbibresource{/Users/kjhealy/Documents/bibs/socbib.bib}
-\addbibresource{/Users/kjhealy/Documents/bibs/socbib-pandoc.bib}
 
 %   %% these tweak the biblatex-chicago format to conform to AJS style.
-   \DeclareFieldFormat[article]{title}{\mkbibquote{#1}}
-   \DeclareFieldFormat[book]{title}{%
-   \mkbibemph{#1}\isdot} % for books
-\DeclareFieldFormat{booktitle}{\mkbibemph{#1}} % for edited volumes
+%    \DeclareFieldFormat[article]{title}{\mkbibquote{#1}}
+%    \DeclareFieldFormat[book]{title}{%
+%    \mkbibemph{#1}\isdot} % for books
+% \DeclareFieldFormat{booktitle}{\mkbibemph{#1}} % for edited volumes
 
 %% bibnamedash: with Minion Pro the three-emdash lines in the
 %% bibliogrpaphy end up separated from one another, which is very

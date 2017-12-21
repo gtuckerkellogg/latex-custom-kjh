@@ -37,11 +37,12 @@
 
 \RequirePackage[T1]{fontenc}
 \RequirePackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{2032}{$'$}
 %\RequirePackage{fixltx2e}
 \RequirePackage{wrapfig}
 \RequirePackage{rotating}
 \RequirePackage{memoir-article-styles}
-\RequirePackage[american]{babel}
+\RequirePackage[english]{babel}
 \RequirePackage[babel]{csquotes}
 \RequirePackage[svgnames]{xcolor}
 \RequirePackage{soul}
@@ -51,11 +52,13 @@
 %%% If MinionPro is not specified, use Times instead.
 %%% See the MinionPro.sty manual for details on the MinionPro and tabfigures options.
 \ifthenelse{\boolean{@minion}}{
-  \RequirePackage[fullfamily,opticals,footnotefigures]{MinionPro}
+  %\RequirePackage[fullfamily,opticals,footnotefigures]{MinionPro}
+  \RequirePackage[footnotefigures]{MinionPro}
   \RequirePackage[scaled=0.7]{beramono}
   \RequirePackage{microtype}
+  \RequirePackage[osf]{AlegreyaSans}
   \RequirePackage[toc,eqno,enum]{tabfigures} %% use tabular figures in tables, toc, equations
-  \renewcommand{\scdefault}{ssc} %% nicer small-caps headings  
+  \renewcommand{\scdefault}{ssc} %% nicer small-caps headings
 }{
   \RequirePackage{times}
   \RequirePackage[config=mt-ptm]{microtype}
@@ -68,15 +71,13 @@ citecolor=DarkSlateBlue, filecolor=DarkSlateBlue, plainpages=false,
 pdfpagelabels, bookmarksnumbered]{hyperref}
 \RequirePackage{etoolbox}
 
-%% Biblatex
-\RequirePackage[style=numeric-comp, backend=biber, babel=hyphen, bibencoding=inputenc, isbn=true,
-                 uniquename=false,doi=false,url=false]{biblatex} % biblatex setup
-% \RequirePackage[style=authoryear,
-%             bibstyle=authoryear,
-%             citestyle=authoryear-comp,
-%             uniquename=false,
-%             hyperref=true,
-%             backend=biber, babel=hyphen, bibencoding=inputenc]{biblatex}
+% Biblatex
+ \RequirePackage[style=authoryear,
+             bibstyle=authoryear,
+             citestyle=authoryear-comp,
+             uniquename=false,
+             hyperref=true,
+             backend=biber, babel=hyphen, bibencoding=inputenc]{biblatex}
 
 
 %% Basic bibliography

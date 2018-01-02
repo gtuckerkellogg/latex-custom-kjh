@@ -10,7 +10,7 @@
 % Use \symbolfootnote[0]{Footnote text} for a blank footnote. 
 % Useful for an initial acknowledgment note.
 \long\def\symbolfootnote[#1]#2{\begingroup%
-\def\thefootnote{\fnsymbol{footnote}}\footnote[#1]{#2}\endgroup}
+  \def\thefootnote{\fnsymbol{footnote}}\footnote[#1]{#2}\endgroup}
 
 %% Redefine \and and \andnext to remove tabular environment.
 %% Needed below for custom article-styles when multiple authors are present. 
@@ -21,15 +21,13 @@
 %% Custom hanging indent for vita items
 \def\mybibind{\hangindent=1 true cm\hangafter=1 \noindent}
 
-
-
 %%% add supplemental figure and table section
 
 \newcommand{\beginsupplement}{%
-        \setcounter{table}{0}
-        \renewcommand{\thetable}{S\arabic{table}}%
-        \setcounter{figure}{0}
-        \renewcommand{\thefigure}{S\arabic{figure}}%
+  \setcounter{table}{0}
+  \renewcommand{\thetable}{S\arabic{table}}%
+  \setcounter{figure}{0}
+  \renewcommand{\thefigure}{S\arabic{figure}}%
 }
 
 
@@ -39,245 +37,96 @@
 %%% --------------------------------------------------
 
 % Make the style for Chapters and sections
-   \makechapterstyle{memo-comments}{
-     \renewcommand\thesection{\arabic{section}} 
-     \setsecheadstyle{\Large\sffamily} 
-     \setsubsecheadstyle{\large\sffamily} 
-     \setsubsubsecheadstyle{\normalsize\sffamily\itshape} 
-    \renewcommand{\printchaptername}{} 
-    \renewcommand{\chapternamenum}{} 
-    \renewcommand{\chapnumfont}{\chaptitlefont} 
-    \renewcommand{\printchapternum}{\chapnumfont \thechapter\space} 
-    \renewcommand{\afterchapternum}{} 
-    \renewcommand{\printchaptername}{\secheadstyle}
-    \renewcommand{\cftchapterfont}{\normalfont} 
-    \renewcommand{\cftchapterpagefont}{\normalfont\sffamily} 
-    \renewcommand{\cftchapterpresnum}{\sffamily} 
-    %\renewcommand{\cftchapterleader}{} 
-    %\renewcommand{\cftchapterafterpnum}{\cftparfillskip}
-    \captiontitlefont{\small}
-    \settocdepth{chapter}
-    \maxsecnumdepth{chapter} 
-    \setsecnumdepth{chapter}
+\makechapterstyle{memo-comments}{
+  \renewcommand\thesection{\arabic{section}} 
+  \setsecheadstyle{\Large\sffamily} 
+  \setsubsecheadstyle{\large\sffamily} 
+  \setsubsubsecheadstyle{\normalsize\sffamily\itshape} 
+  \renewcommand{\printchaptername}{} 
+  \renewcommand{\chapternamenum}{} 
+  \renewcommand{\chapnumfont}{\chaptitlefont} 
+  \renewcommand{\printchapternum}{\chapnumfont \thechapter\space} 
+  \renewcommand{\afterchapternum}{} 
+  \renewcommand{\printchaptername}{\secheadstyle}
+  \renewcommand{\cftchapterfont}{\normalfont} 
+  \renewcommand{\cftchapterpagefont}{\normalfont\sffamily} 
+  \renewcommand{\cftchapterpresnum}{\sffamily} 
+  % \renewcommand{\cftchapterleader}{} 
+  % \renewcommand{\cftchapterafterpnum}{\cftparfillskip}
+  \captiontitlefont{\small}
+  \settocdepth{chapter}
+  \maxsecnumdepth{chapter} 
+  \setsecnumdepth{chapter}
 
-    % reduce skip after section heading
-    \setaftersecskip{1.7ex}
-    
-    % Title 
-    \pretitle{\begin{flushleft}\LARGE\sffamily\bfseries}
+  % reduce skip after section heading
+  \setaftersecskip{1.7ex}
+  
+  % Title 
+  \pretitle{\begin{flushleft}\LARGE\sffamily\bfseries}
     \posttitle{\end{flushleft}\par\vskip 0.5em}
-    \preauthor{\begin{flushleft}\Large\sffamily}
+  \preauthor{\begin{flushleft}\Large\sffamily}
     \postauthor{\end{flushleft}}
-    \predate{\begin{flushleft}\sffamily\footnotesize\vspace{0.9em}}
+  \predate{\begin{flushleft}\sffamily\footnotesize\vspace{0.9em}}
     \postdate{\end{flushleft}\par\vskip 2em}
-   }
+}
 
 %%% --------------------------------------------------
 %%% Style: article-1 
 %%% --------------------------------------------------
 % Make the style for Chapters and sections
-   \makechapterstyle{article-1}{
-     \setsecheadstyle{\Large\scshape} 
-     \setsubsecheadstyle{\normalsize\itshape}
-    \renewcommand{\printchaptername}{} 
-    \renewcommand{\chapternamenum}{} 
-    \renewcommand{\chapnumfont}{\chaptitlefont} 
-    \renewcommand{\printchapternum}{\chapnumfont \thechapter\space} 
-    \renewcommand{\afterchapternum}{} 
-    \renewcommand{\printchaptername}{\secheadstyle}
-    \renewcommand{\cftchapterfont}{\normalfont} 
-    \renewcommand{\cftchapterpagefont}{\normalfont\scshape} 
-    \renewcommand{\cftchapterpresnum}{\scshape} 
-     \counterwithout{section}{chapter}
+\makechapterstyle{article-1}{
+  \setsecheadstyle{\Large\scshape\MakeLowercase} 
+  \setsubsecheadstyle{\normalsize\itshape}
+  \renewcommand{\printchaptername}{} 
+  \renewcommand{\chapternamenum}{} 
+  \renewcommand{\chapnumfont}{\chaptitlefont} 
+  \renewcommand{\printchapternum}{\chapnumfont \thechapter\space} 
+  \renewcommand{\afterchapternum}{} 
+  \renewcommand{\printchaptername}{\secheadstyle}
+  \renewcommand{\cftchapterfont}{\normalfont} 
+  \renewcommand{\cftchapterpagefont}{\normalfont\scshape} 
+  \renewcommand{\cftchapterpresnum}{\scshape} 
+  \counterwithout{section}{chapter}
 
-    % \renewcommand{\cftchapterleader}{} 
-    %\renewcommand{\cftchapterafterpnum}{\cftparfillskip}
-    \captiontitlefont{\small}
-    %\settocdepth{chapter}
-%     \maxsecnumdepth{section} 
-%     \setsecnumdepth{section}
+  % \renewcommand{\cftchapterleader}{} 
+  % \renewcommand{\cftchapterafterpnum}{\cftparfillskip}
+  \captiontitlefont{\small}
+  % \settocdepth{chapter}
+  % \maxsecnumdepth{section} 
+  % \setsecnumdepth{section}
 
-    % reduce skip after section heading
-    \setaftersecskip{1.7ex}
-    
-    % set name of bibliography to 'references'
-    % \renewcommand{\bibname}{\mdseries\Large\scshape\MakeLowercase References}
+  % reduce skip after section heading
+  \setaftersecskip{1.7ex}
+  
+  % set name of bibliography to 'references'
+  % \renewcommand{\bibname}{\mdseries\Large\scshape\MakeLowercase References}
 
-    \pretitle{\newline\centering \LARGE\scshape \MakeLowercase }
-    \posttitle{\par\vskip 1em}
-    \predate{\footnotesize \centering}
-    \postdate{\par\vskip 1em}
-    
-    % 'abstract' title, bigger skip from title
-    \addto\captionsamerican{\renewcommand{\abstractname}{}}
-    \abstractrunin
-   }
-     
+  \pretitle{\newline\centering \LARGE\scshape \MakeLowercase }
+  \posttitle{\par\vskip 1em}
+  \predate{\footnotesize \centering}
+  \postdate{\par\vskip 1em}
+  
+  % 'abstract' title, bigger skip from title
+  \addto\captionsamerican{\renewcommand{\abstractname}{}}
+  \abstractrunin
+}
+
 %%% --------------------------------------------------
 %%% Style: article-2 
 %%% --------------------------------------------------
 
 % Make the style for Chapters and sections
-   \makechapterstyle{article-2}{
-    \setsecheadstyle{\Large\sffamily} 
-    \setsubsecheadstyle{\normalsize\sffamily\itshape} 
-	\setaftersubsubsecskip{-1em}
-    \setsubsubsecheadstyle{\small\bfseries}
-    \renewcommand{\printchaptername}{} 
-    \renewcommand{\chapternamenum}{} 
-    \renewcommand{\chapnumfont}{\chaptitlefont} 
-    \renewcommand{\printchapternum}{\chapnumfont \thechapter\space} 
-    \renewcommand{\afterchapternum}{} 
-    \renewcommand{\printchaptername}{\secheadstyle}
-    \renewcommand{\cftchapterfont}{\normalfont} 
-    \renewcommand{\cftchapterpagefont}{\normalfont\scshape} 
-    \renewcommand{\cftchapterpresnum}{\scshape} 
-    %\renewcommand{\cftchapterleader}{} 
-    %\renewcommand{\cftchapterafterpnum}{\cftparfillskip}
-    \captiontitlefont{\small}
-    %\settocdepth{chapter}
-    \maxsecnumdepth{chapter} 
-    \setsecnumdepth{chapter}
+\makechapterstyle{article-2}{
+  \renewcommand{\printchaptertitle}[1]{%
+\large\sffamily\bfseries{##1}}
+  \renewcommand{\afterchaptertitle}{%
+    \vskip\onelineskip}       
 
-    % reduce skip after section heading
-    \setaftersecskip{1.7ex}
-    
-    % set name of bibliography to 'references'
-    % \renewcommand{\bibname}{\mdseries\Large\scshape\MakeLowercase References}
-
-    % Title flush left
-    \pretitle{\begin{flushleft}\LARGE\sffamily}
-    \posttitle{\end{flushleft}\par\vskip 0.5em}
-    \preauthor{\begin{flushleft}\sffamily\itshape  \Large \vspace{0.5em}}
-    \postauthor{\end{flushleft}}
-    \predate{\begin{flushleft}\sffamily\footnotesize\vspace{0.9em}}
-    \postdate{\end{flushleft}\par\vskip 2em}
-    
-    % 'abstract' title, bigger skip from title
-    \addto\captionsamerican{\renewcommand{\abstractname}{Abstract:}}
-    \renewcommand{\abstractnamefont}{\normalfont\scriptsize\itshape}
-    \renewcommand{\abstracttextfont}{\normalfont\scriptsize}
-    \abstractrunin
-
-   }
-
-%%% --------------------------------------------------
-%%% Style: article-3 
-%%% --------------------------------------------------
-% Make the style for Chapters and sections
-   \makechapterstyle{article-3}{
-     % \renewcommand\thesection{\arabic{section}} 
-     % \renewcommand\thesubsection{\arabic{subsection}} 
-     \setsecheadstyle{\Large\sffamily} 
-     \setsubsecheadstyle{\large\sffamily} 
-     \setsubsubsecheadstyle{\normalsize\sffamily\itshape} 
-    \renewcommand{\printchaptername}{} 
-    \renewcommand{\chapternamenum}{} 
-    \renewcommand{\chapnumfont}{\chaptitlefont} 
-    \renewcommand{\printchapternum}{\chapnumfont \thechapter\space} 
-    \renewcommand{\afterchapternum}{} 
-    \renewcommand{\printchaptername}{\secheadstyle}
-    \renewcommand{\cftchapterfont}{\normalfont} 
-    \renewcommand{\cftchapterpagefont}{\normalfont\sffamily} 
-    \renewcommand{\cftchapterpresnum}{\sffamily} 
-    %\renewcommand{\cftchapterleader}{} 
-    %\renewcommand{\cftchapterafterpnum}{\cftparfillskip}
-    \captiontitlefont{\small}
-    % \settocdepth{chapter}       
-    \maxsecnumdepth{subsubsection} 
-    \setsecnumdepth{subsubsection}
-    \counterwithout{section}{chapter
-}
-    % reduce skip after section heading
-    \setaftersecskip{1.7ex}
-    
-    % set name of bibliography to 'references'
-    % \renewcommand{\bibname}{\mdseries\Large\sffamily\MakeLowercase References}
-
-    % Title 
-    \pretitle{\par\vskip 3em 
-        \begin{flushleft}\Huge\bfseries\sffamily}
-    \posttitle{\end{flushleft}\par\vskip 0.5em}
-    \preauthor{\begin{flushleft}\Large\bigskip}
-    \postauthor{\end{flushleft}}
-    \predate{\begin{flushleft}\normalsize}
-    \postdate{\end{flushleft}}
-
-    % \pretitle{\LARGE \sffamily}
-    % \posttitle{\par\vskip 0.5em}
-    % \preauthor{\large \sffamily \lineskip 1em}
-    % \postauthor{\par\lineskip 1em}
-    % \predate{\sffamily\footnotesize\vspace{0.65em}}
-    % \postdate{\par\vskip 2em}
-    
-    % 'abstract' title, bigger skip from title
-    \addto\captionsamerican{\renewcommand{\abstractname}{Abstract:}}
-    \renewcommand{\abstractnamefont}{\normalfont\scriptsize\itshape}
-    \renewcommand{\abstracttextfont}{\normalfont\scriptsize}
-    \abstractrunin
-
-   }     
-
-%%% --------------------------------------------------
-%%% Style: article-4 (AJS) 
-%%% --------------------------------------------------
-
-%% Make the style for Chapters and sections
-   \makechapterstyle{article-4}{
-    \setsecheadstyle{\Large\scshape\MakeLowercase} 
-    \setsubsecheadstyle{\normalsize\itshape} 
-	\setaftersubsubsecskip{-1em}
-    \setsubsubsecheadstyle{\small\bfseries}
-    \renewcommand{\printchaptername}{} 
-    \renewcommand{\chapternamenum}{} 
-    \renewcommand{\chapnumfont}{\chaptitlefont} 
-    \renewcommand{\printchapternum}{\chapnumfont \thechapter\space} 
-    \renewcommand{\afterchapternum}{} 
-    \renewcommand{\printchaptername}{\secheadstyle}
-    \renewcommand{\cftchapterfont}{\normalfont} 
-    \renewcommand{\cftchapterpagefont}{\normalfont\scshape} 
-    \renewcommand{\cftchapterpresnum}{\scshape} 
-    %\renewcommand{\cftchapterleader}{} 
-    %\renewcommand{\cftchapterafterpnum}{\cftparfillskip}
-    \captiontitlefont{\small}
-    %\settocdepth{chapter}
-    \maxsecnumdepth{chapter} 
-    \setsecnumdepth{chapter}
-
-    % reduce skip after section heading
-    \setaftersecskip{1.7ex}
-    
-    % set name of bibliography to 'references'
-    %\renewcommand{\bibname}{\mdseries\Large\scshape\MakeLowercase References}
-
-    % % Title flush left
-    \pretitle{\par\vskip 3em 
-        \begin{flushleft}\LARGE\bfseries}
-    \posttitle{\end{flushleft}\par\vskip 0.5em}
-    \preauthor{\begin{flushleft}\normalsize\bigskip}
-    \postauthor{\end{flushleft}}
-    \predate{\begin{flushleft}\normalsize}
-    \postdate{\end{flushleft}}
-
-    % 'abstract' bigger skip from title
-    \addto\captionsamerican{\renewcommand{\abstractname}{}}
-    \renewcommand{\abstractname}{}
-    \renewcommand{\abstracttextfont}{\normalfont\scriptsize}
-    \abstractrunin
-   }
-
-
-%%% --------------------------------------------------
-%%% Style: article-gtk
-%%% --------------------------------------------------
-
-%% Make the style for Chapters and sections
-\makechapterstyle{article-gtk}{
-  \setsecheadstyle{\Large\scshape\MakeLowercase} 
-  \setsubsecheadstyle{\large\itshape} 
+  \setsecheadstyle{\large\sffamily\bfseries} 
+  \setsubsecheadstyle{\normalsize\sffamily\itshape} 
+  \setsechook{\hangsecnum}
   \setaftersubsubsecskip{-1em}
   \setsubsubsecheadstyle{\small\bfseries}
-  \counterwithout{section}{chapter}
   \renewcommand{\printchaptername}{} 
   \renewcommand{\chapternamenum}{} 
   \renewcommand{\chapnumfont}{\chaptitlefont} 
@@ -289,11 +138,118 @@
   \renewcommand{\cftchapterpresnum}{\scshape} 
   % \renewcommand{\cftchapterleader}{} 
   % \renewcommand{\cftchapterafterpnum}{\cftparfillskip}
-  \captionsetup{font={small,sf},labelfont=bf}
+  \captiontitlefont{\small}
   % \settocdepth{chapter}
-    \maxsecnumdepth{subsubsection} 
-    \setsecnumdepth{subsubsection}
-    \counterwithout{section}{chapter}
+  \maxsecnumdepth{section} 
+  \setsecnumdepth{section}
+  \counterwithout{section}{chapter}
+  % \maxsecnumdepth{chapter} 
+  % \setsecnumdepth{chapter}
+
+  % reduce skip after section heading
+  \setaftersecskip{1.7ex}
+  
+  % set name of bibliography to 'references'
+  % \renewcommand{\bibname}{\mdseries\Large\scshape\MakeLowercase References}
+
+  % Title flush left
+  \pretitle{\begin{flushleft}\LARGE\sffamily\bfseries}
+    \posttitle{\end{flushleft}\par\vskip 0.5em}
+  \preauthor{\begin{flushleft}\sffamily\itshape  \Large \vspace{0.5em}}
+    \postauthor{\end{flushleft}}
+  \predate{\begin{flushleft}\sffamily\footnotesize\vspace{0.9em}}
+    \postdate{\end{flushleft}\par\vskip 1em}
+  
+  % 'abstract' title, bigger skip from title
+  \addto\captionsamerican{\renewcommand{\abstractname}{}}
+  \setlength{\abstitleskip}{0pt}
+  \renewcommand{\abstractname}{abstract}
+  \renewcommand{\abstractnamefont}{\scshape\bfseries}
+  \renewcommand{\abstracttextfont}{\normalfont\footnotesize}
+}
+
+%%% --------------------------------------------------
+%%% Style: article-3 
+%%% --------------------------------------------------
+% Make the style for Chapters and sections
+\makechapterstyle{article-3}{
+  % \renewcommand\thesection{\arabic{section}} 
+  % \renewcommand\thesubsection{\arabic{subsection}} 
+  \setsecheadstyle{\Large\sffamily} 
+  \setsubsecheadstyle{\large\sffamily} 
+  \setsubsubsecheadstyle{\normalsize\sffamily\itshape} 
+  \renewcommand{\printchaptername}{} 
+  \renewcommand{\chapternamenum}{} 
+  \renewcommand{\chapnumfont}{\chaptitlefont} 
+  \renewcommand{\printchapternum}{\chapnumfont \thechapter\space} 
+  \renewcommand{\afterchapternum}{} 
+  \renewcommand{\printchaptername}{\secheadstyle}
+  \renewcommand{\cftchapterfont}{\normalfont} 
+  \renewcommand{\cftchapterpagefont}{\normalfont\sffamily} 
+  \renewcommand{\cftchapterpresnum}{\sffamily} 
+  % \renewcommand{\cftchapterleader}{} 
+  % \renewcommand{\cftchapterafterpnum}{\cftparfillskip}
+  \captiontitlefont{\small}
+  % \settocdepth{chapter}       
+  \maxsecnumdepth{subsubsection} 
+  \setsecnumdepth{subsubsection}
+  \counterwithout{section}{chapter
+  }
+  % reduce skip after section heading
+  \setaftersecskip{1.7ex}
+  
+  % set name of bibliography to 'references'
+  % \renewcommand{\bibname}{\mdseries\Large\sffamily\MakeLowercase References}
+
+  % Title 
+  \pretitle{\par\vskip 3em 
+    \begin{flushleft}\Huge\bfseries\sffamily}
+    \posttitle{\end{flushleft}\par\vskip 0.5em}
+  \preauthor{\begin{flushleft}\Large\bigskip}
+    \postauthor{\end{flushleft}}
+  \predate{\begin{flushleft}\normalsize}
+    \postdate{\end{flushleft}}
+
+  % \pretitle{\LARGE \sffamily}
+  % \posttitle{\par\vskip 0.5em}
+  % \preauthor{\large \sffamily \lineskip 1em}
+  % \postauthor{\par\lineskip 1em}
+  % \predate{\sffamily\footnotesize\vspace{0.65em}}
+  % \postdate{\par\vskip 2em}
+  
+  % 'abstract' title, bigger skip from title
+  \addto\captionsamerican{\renewcommand{\abstractname}{Abstract:}}
+  \renewcommand{\abstractnamefont}{\normalfont\scriptsize\itshape}
+  \renewcommand{\abstracttextfont}{\normalfont\scriptsize}
+  \abstractrunin
+
+}     
+
+%%% --------------------------------------------------
+%%% Style: article-4 (AJS) 
+%%% --------------------------------------------------
+
+%% Make the style for Chapters and sections
+\makechapterstyle{article-4}{
+  \setsecheadstyle{\Large\scshape\MakeLowercase} 
+  \setsubsecheadstyle{\normalsize\itshape} 
+  \setaftersubsubsecskip{-1em}
+  \setsubsubsecheadstyle{\small\bfseries}
+  \renewcommand{\printchaptername}{} 
+  \renewcommand{\chapternamenum}{} 
+  \renewcommand{\chapnumfont}{\chaptitlefont} 
+  \renewcommand{\printchapternum}{\chapnumfont \thechapter\space} 
+  \renewcommand{\afterchapternum}{} 
+  \renewcommand{\printchaptername}{\secheadstyle}
+  \renewcommand{\cftchapterfont}{\normalfont} 
+  \renewcommand{\cftchapterpagefont}{\normalfont\scshape} 
+  \renewcommand{\cftchapterpresnum}{\scshape} 
+  % \renewcommand{\cftchapterleader}{} 
+  % \renewcommand{\cftchapterafterpnum}{\cftparfillskip}
+  \captiontitlefont{\small}
+  % \settocdepth{chapter}
+  \maxsecnumdepth{chapter} 
+  \setsecnumdepth{chapter}
 
   % reduce skip after section heading
   \setaftersecskip{1.7ex}
@@ -319,54 +275,168 @@
 
 
 %%% --------------------------------------------------
-%%% article-4-sans (AJS, but sans-serif headings) 
+%%% Style: article-gtk
 %%% --------------------------------------------------
 
 %% Make the style for Chapters and sections
-   \makechapterstyle{article-4-sans}{
-    \setsecheadstyle{\sffamily\bfseries} 
-    \setsubsecheadstyle{\normalsize\sffamily\itshape} 
-	\setaftersubsubsecskip{-1em}
-    \setsubsubsecheadstyle{\small}
-    \renewcommand{\printchaptername}{} 
-    \renewcommand{\chapternamenum}{} 
-    \renewcommand{\chapnumfont}{\chaptitlefont} 
-    \renewcommand{\printchapternum}{\chapnumfont \thechapter\space} 
-    \renewcommand{\afterchapternum}{} 
-    \renewcommand{\printchaptername}{\secheadstyle}
-    \renewcommand{\cftchapterfont}{\normalfont} 
-    \renewcommand{\cftchapterpagefont}{\normalfont\sffamily} 
-    \renewcommand{\cftchapterpresnum}{\sffamily} 
-    %\renewcommand{\cftchapterleader}{} 
-    %\renewcommand{\cftchapterafterpnum}{\cftparfillskip}
-    \captiontitlefont{\small}
-    %\settocdepth{chapter}
-    \maxsecnumdepth{chapter} 
-    \setsecnumdepth{chapter}
+\makechapterstyle{article-gtk}{
+  \renewcommand{\printchaptertitle}[1]{%
+    \Large\scshape\MakeLowercase{##1}}
+  \renewcommand{\afterchaptertitle}{%
+    \vskip\onelineskip}       
+  \setsecheadstyle{\Large\scshape\MakeLowercase}
+  \setsubsecheadstyle{\large\itshape} 
+  \setaftersubsubsecskip{-1em}
+  \setsechook{\hangsecnum}
+  \setsubsubsecheadstyle{\small\bfseries}
+  \counterwithout{section}{chapter}
+  \renewcommand{\printchaptername}{} 
+  \renewcommand{\chapternamenum}{} 
+  \renewcommand{\chapnumfont}{\chaptitlefont} 
+  \renewcommand{\printchapternum}{\chapnumfont \thechapter\space} 
+  \renewcommand{\afterchapternum}{} 
+  \renewcommand{\printchaptername}{\secheadstyle}
+  \renewcommand{\cftchapterfont}{\normalfont} 
+  \renewcommand{\cftchapterpagefont}{\normalfont\scshape} 
+  \renewcommand{\cftchapterpresnum}{\scshape} 
+  % \renewcommand{\cftchapterleader}{} 
+  % \renewcommand{\cftchapterafterpnum}{\cftparfillskip}
+  \captionnamefont{\small\sffamily\bfseries}
+  \captiontitlefont{\small\sffamily}
+  %\settocdepth{chapter}
+  \maxsecnumdepth{section} 
+  \setsecnumdepth{section}
+  \counterwithout{section}{chapter}
 
-    %% reduce skip after section heading
-    \setaftersecskip{1.7ex}
-    
-    %% set name of bibliography to 'references'
-    %%\renewcommand{\bibname}{\mdseries\Large\sffamily References}
-
-    % % Title flush left
-    \pretitle{\par\vskip 3em 
-        \begin{flushleft}\LARGE\sffamily\bfseries}
+  \setaftersecskip{1.7ex}
+  
+  
+  % % Title flush left
+  \pretitle{\par\vskip 3em 
+    \begin{flushleft}\LARGE\bfseries}
     \posttitle{\end{flushleft}\par\vskip 0.5em}
-    \preauthor{\begin{flushleft}\Large}
+  \preauthor{\begin{flushleft}\normalsize\bigskip}
     \postauthor{\end{flushleft}}
-    \predate{\begin{flushleft}\normalsize}
+  \predate{\begin{flushleft}\normalsize}
     \postdate{\end{flushleft}}
-    
-    %% 'abstract' bigger skip from title
-    \addto\captionsamerican{\renewcommand*{\abstractname}{}}
-    \renewcommand{\abstractnamefont}{\normalfont\scriptsize}
-    \renewcommand{\abstracttextfont}{\normalfont\scriptsize}
-    \abstractrunin
 
-    
-   }
+  % 'abstract' bigger skip from title
+  \addto\captionsamerican{\renewcommand{\abstractname}{}}
+  \setlength{\abstitleskip}{0pt}
+  \setlength{\absparindent}{0pt}
+  \renewcommand{\abstractname}{abstract}
+  \renewcommand{\abstractnamefont}{\scshape\bfseries}
+  \renewcommand{\abstracttextfont}{\normalfont\small}
+}
+
+
+
+%%% --------------------------------------------------
+%%% Style: article-gtk
+%%% --------------------------------------------------
+
+% \titleformat{\section}
+%   {\normalfont\Large\bfseries}{\llap{\parbox{\titleindent}{\thesection\hfill}}}{0em}{}
+
+\makechapterstyle{article-gtk2}{
+  \renewcommand{\printchaptertitle}[1]{%
+    \Large\scshape\MakeLowercase{##1}}
+  \renewcommand{\afterchaptertitle}{%
+    \vskip\onelineskip}       
+%  \setsecheadstyle{\Large\scshape\MakeLowercase}
+  \setsecheadstyle{\large\sffamily\bfseries}
+  \setsubsecheadstyle{\large\itshape} 
+  \setaftersubsubsecskip{-1em}
+  \setsubsubsecheadstyle{\small\bfseries}
+  \counterwithout{section}{chapter}
+  \renewcommand{\printchaptername}{} 
+  \renewcommand{\chapternamenum}{} 
+  \renewcommand{\chapnumfont}{\chaptitlefont} 
+  \renewcommand{\printchapternum}{\chapnumfont \thechapter\space} 
+  \renewcommand{\afterchapternum}{} 
+  \renewcommand{\printchaptername}{\secheadstyle}
+  \renewcommand{\cftchapterfont}{\normalfont} 
+  \renewcommand{\cftchapterpagefont}{\normalfont\scshape} 
+  \renewcommand{\cftchapterpresnum}{\scshape} 
+  % \renewcommand{\cftchapterleader}{} 
+  % \renewcommand{\cftchapterafterpnum}{\cftparfillskip}
+  \captionnamefont{\small\sffamily\bfseries}
+  \captiontitlefont{\small\sffamily}
+  %\settocdepth{chapter}
+  \maxsecnumdepth{section} 
+  \setsecnumdepth{section}
+  \counterwithout{section}{chapter}
+
+  \setaftersecskip{1.7ex}
+  
+  
+  % % Title flush left
+  \pretitle{\par\vskip 3em 
+    \begin{flushleft}\LARGE\bfseries}
+    \posttitle{\end{flushleft}\par\vskip 0.5em}
+  \preauthor{\begin{flushleft}\normalsize\bigskip}
+    \postauthor{\end{flushleft}}
+  \predate{\begin{flushleft}\normalsize}
+    \postdate{\end{flushleft}}
+
+  % 'abstract' bigger skip from title
+  \addto\captionsamerican{\renewcommand{\abstractname}{}}
+  \renewcommand{\abstractname}{}
+  \renewcommand{\abstracttextfont}{\normalfont\scriptsize}
+  \abstractrunin
+}
+
+
+%%% --------------------------------------------------
+%%% article-4-sans (AJ
+%%% \item S, but sans-serif headings) 
+%%% --------------------------------------------------
+
+%% Make the style for Chapters and sections
+\makechapterstyle{article-4-sans}{
+  \setsecheadstyle{\sffamily\bfseries} 
+  \setsubsecheadstyle{\normalsize\sffamily\itshape} 
+  \setaftersubsubsecskip{-1em}
+  \setsubsubsecheadstyle{\small}
+  \renewcommand{\printchaptername}{} 
+  \renewcommand{\chapternamenum}{} 
+  \renewcommand{\chapnumfont}{\chaptitlefont} 
+  \renewcommand{\printchapternum}{\chapnumfont \thechapter\space} 
+  \renewcommand{\afterchapternum}{} 
+  \renewcommand{\printchaptername}{\secheadstyle}
+  \renewcommand{\cftchapterfont}{\normalfont} 
+  \renewcommand{\cftchapterpagefont}{\normalfont\sffamily} 
+  \renewcommand{\cftchapterpresnum}{\sffamily} 
+  % \renewcommand{\cftchapterleader}{} 
+  % \renewcommand{\cftchapterafterpnum}{\cftparfillskip}
+  \captiontitlefont{\small}
+  % \settocdepth{chapter}
+  \maxsecnumdepth{chapter} 
+  \setsecnumdepth{chapter}
+
+  %% reduce skip after section heading
+  \setaftersecskip{1.7ex}
+  
+  %% set name of bibliography to 'references'
+  %% \renewcommand{\bibname}{\mdseries\Large\sffamily References}
+
+  % % Title flush left
+  \pretitle{\par\vskip 3em 
+    \begin{flushleft}\LARGE\sffamily\bfseries}
+    \posttitle{\end{flushleft}\par\vskip 0.5em}
+  \preauthor{\begin{flushleft}\Large}
+    \postauthor{\end{flushleft}}
+  \predate{\begin{flushleft}\normalsize}
+    \postdate{\end{flushleft}}
+  
+  %% 'abstract' bigger skip from title
+  \addto\captionsamerican{\renewcommand*{\abstractname}{}}
+  \renewcommand{\abstractnamefont}{\normalfont\scriptsize}
+  \renewcommand{\abstracttextfont}{\normalfont\scriptsize}
+  \abstractrunin
+
+  
+}
 
 
 %%% --------------------------------------------------
@@ -375,48 +445,48 @@
 %%% --------------------------------------------------
 
 %% Make the style for Chapters and sections
-   \makechapterstyle{article-5}{
-    \setsecheadstyle{\Large\secfont} 
-    \setsubsecheadstyle{\normalsize\itshape} 
-	\setaftersubsubsecskip{-1em}
-    \setsubsubsecheadstyle{\small\bfseries}
-    \renewcommand{\printchaptername}{} 
-    \renewcommand{\chapternamenum}{} 
-    \renewcommand{\chapnumfont}{\chaptitlefont} 
-    \renewcommand{\printchapternum}{\chapnumfont \thechapter\space} 
-    \renewcommand{\afterchapternum}{} 
-    \renewcommand{\printchaptername}{\secheadstyle}
-    \renewcommand{\cftchapterfont}{\normalfont} 
-    \renewcommand{\cftchapterpagefont}{\normalfont\textbf} 
-    \renewcommand{\cftchapterpresnum}{\textbf} 
-    %\renewcommand{\cftchapterleader}{} 
-    %\renewcommand{\cftchapterafterpnum}{\cftparfillskip}
-    \captiontitlefont{\small}
-    %\settocdepth{chapter}
-    \maxsecnumdepth{chapter} 
-    \setsecnumdepth{chapter}
+\makechapterstyle{article-5}{
+  \setsecheadstyle{\Large\secfont} 
+  \setsubsecheadstyle{\normalsize\itshape} 
+  \setaftersubsubsecskip{-1em}
+  \setsubsubsecheadstyle{\small\bfseries}
+  \renewcommand{\printchaptername}{} 
+  \renewcommand{\chapternamenum}{} 
+  \renewcommand{\chapnumfont}{\chaptitlefont} 
+  \renewcommand{\printchapternum}{\chapnumfont \thechapter\space} 
+  \renewcommand{\afterchapternum}{} 
+  \renewcommand{\printchaptername}{\secheadstyle}
+  \renewcommand{\cftchapterfont}{\normalfont} 
+  \renewcommand{\cftchapterpagefont}{\normalfont\textbf} 
+  \renewcommand{\cftchapterpresnum}{\textbf} 
+  % \renewcommand{\cftchapterleader}{} 
+  % \renewcommand{\cftchapterafterpnum}{\cftparfillskip}
+  \captiontitlefont{\small}
+  % \settocdepth{chapter}
+  \maxsecnumdepth{chapter} 
+  \setsecnumdepth{chapter}
 
-    % reduce skip after section heading
-    \setaftersecskip{1.7ex}
-    
-    % set name of bibliography to 'references'
-    %\renewcommand{\bibname}{\mdseries\Large\scshape\MakeLowercase References}
+  % reduce skip after section heading
+  \setaftersecskip{1.7ex}
+  
+  % set name of bibliography to 'references'
+  % \renewcommand{\bibname}{\mdseries\Large\scshape\MakeLowercase References}
 
-    % % Title flush left
-    \pretitle{\par\vskip 3em 
-        \begin{flushleft}\LARGE\bfseries}
+  % % Title flush left
+  \pretitle{\par\vskip 3em 
+    \begin{flushleft}\LARGE\bfseries}
     \posttitle{\end{flushleft}\par\vskip 0.5em}
-    \preauthor{\begin{flushleft}\normalsize\bigskip}
+  \preauthor{\begin{flushleft}\normalsize\bigskip}
     \postauthor{\end{flushleft}}
-    \predate{\begin{flushleft}\normalsize}
+  \predate{\begin{flushleft}\normalsize}
     \postdate{\end{flushleft}}
 
-    % 'abstract' bigger skip from title
-    \addto\captionsamerican{\renewcommand{\abstractname}{}}
-    \renewcommand{\abstractname}{}
-    \renewcommand{\abstracttextfont}{\normalfont\scriptsize}
-    \abstractrunin
-   }
+  % 'abstract' bigger skip from title
+  \addto\captionsamerican{\renewcommand{\abstractname}{}}
+  \renewcommand{\abstractname}{}
+  \renewcommand{\abstracttextfont}{\normalfont\scriptsize}
+  \abstractrunin
+}
 
 
 %%% --------------------------------------------------
@@ -425,53 +495,53 @@
 
 %% For bookdown ``books'' that you want typeset as articles.
 %% Make the style for Chapters and sections
-   \makechapterstyle{article-6}{
-     \setsecheadstyle{\normalsize\itshape} 
-     \setaftersubsubsecskip{-1em}
-     \setsubsubsecheadstyle{\small\bfseries}
-     \renewcommand{\printchaptername}{}
-     \renewcommand{\printchaptertitle}[1]{%
-       \raggedright\Large\scshape\MakeLowercase{##1}}
-     \renewcommand{\chapternamenum}{}
-     \renewcommand{\chapnumfont}{\chaptitlefont}
-     \renewcommand{\chaptitlefont}{\normalfont} 
-     \renewcommand{\printchapternum}{} 
-     \renewcommand{\afterchapternum}{} 
-     \renewcommand{\printchaptername}{\normalfont}
-     \renewcommand{\cftchapterfont}{\normalfont} 
-     \renewcommand{\cftchapterpagefont}{\normalfont\scshape} 
-     \renewcommand{\cftchapterpresnum}{\scshape} 
-     % \renewcommand{\cftchapterleader}{} 
-     % \renewcommand{\cftchapterafterpnum}{\cftparfillskip}
-     \captiontitlefont{\small}
-     % \settocdepth{chapter}
-     \maxsecnumdepth{chapter} 
-     \setsecnumdepth{chapter}
+\makechapterstyle{article-6}{
+  \setsecheadstyle{\normalsize\itshape} 
+  \setaftersubsubsecskip{-1em}
+  \setsubsubsecheadstyle{\small\bfseries}
+  \renewcommand{\printchaptername}{}
+  \renewcommand{\printchaptertitle}[1]{%
+    \raggedright\Large\scshape\MakeLowercase{##1}}
+  \renewcommand{\chapternamenum}{}
+  \renewcommand{\chapnumfont}{\chaptitlefont}
+  \renewcommand{\chaptitlefont}{\normalfont} 
+  \renewcommand{\printchapternum}{} 
+  \renewcommand{\afterchapternum}{} 
+  \renewcommand{\printchaptername}{\normalfont}
+  \renewcommand{\cftchapterfont}{\normalfont} 
+  \renewcommand{\cftchapterpagefont}{\normalfont\scshape} 
+  \renewcommand{\cftchapterpresnum}{\scshape} 
+  % \renewcommand{\cftchapterleader}{} 
+  % \renewcommand{\cftchapterafterpnum}{\cftparfillskip}
+  \captiontitlefont{\small}
+  % \settocdepth{chapter}
+  \maxsecnumdepth{chapter} 
+  \setsecnumdepth{chapter}
 
-     % reduce skip after chapter and section headings
-     \renewcommand{\afterchapskip}{1.7ex}
-     \renewcommand{\beforechapskip}{1.7ex}
+  % reduce skip after chapter and section headings
+  \renewcommand{\afterchapskip}{1.7ex}
+  \renewcommand{\beforechapskip}{1.7ex}
 
-     \setaftersecskip{1.7ex}
-     
-     % set name of bibliography to 'references'
-     % \renewcommand{\bibname}{\mdseries\Large\scshape\MakeLowercase References}
+  \setaftersecskip{1.7ex}
+  
+  % set name of bibliography to 'references'
+  % \renewcommand{\bibname}{\mdseries\Large\scshape\MakeLowercase References}
 
-     % % Title flush left
-     \pretitle{\par\vskip 3em 
-       \begin{flushleft}\LARGE\bfseries}
-       \posttitle{\end{flushleft}\par\vskip 0.5em}
-     \preauthor{\begin{flushleft}\normalsize\bigskip}
-       \postauthor{\end{flushleft}}
-     \predate{\begin{flushleft}\normalsize}
-       \postdate{\end{flushleft}}
+  % % Title flush left
+  \pretitle{\par\vskip 3em 
+    \begin{flushleft}\LARGE\bfseries}
+    \posttitle{\end{flushleft}\par\vskip 0.5em}
+  \preauthor{\begin{flushleft}\normalsize\bigskip}
+    \postauthor{\end{flushleft}}
+  \predate{\begin{flushleft}\normalsize}
+    \postdate{\end{flushleft}}
 
-     % 'abstract' bigger skip from title
-     \addto\captionsamerican{\renewcommand{\abstractname}{}}
-     \renewcommand{\abstractname}{}
-     \renewcommand{\abstracttextfont}{\normalfont\scriptsize}
-     \abstractrunin
-   }
+  % 'abstract' bigger skip from title
+  \addto\captionsamerican{\renewcommand{\abstractname}{}}
+  \renewcommand{\abstractname}{}
+  \renewcommand{\abstracttextfont}{\normalfont\scriptsize}
+  \abstractrunin
+}
 
 
 %%% --------------------------------------------------
@@ -480,122 +550,122 @@
 %%% --------------------------------------------------
 
 %% Make the style for Chapters and sections
-   % \makechapterstyle{membook}{
-   %  \setsecheadstyle{\Large\sffamily\bfseries} 
-   %  \setsubsecheadstyle{\normalsize\sffamily\itshape} 
-   %      \setaftersubsubsecskip{-1em}
-   %  \setsubsubsecheadstyle{\small\sffamily\bfseries}
-   %  \renewcommand{\printchaptername}{\sffamily} 
-   %  \renewcommand{\chapternamenum}{\sffamily} 
-   %  \renewcommand{\chapnumfont}{\chaptitlefont\sffamily} 
-   %  \renewcommand{\printchapternum}{\chapnumfont \thechapter\space} 
-   %  \renewcommand{\afterchapternum}{} 
-   %  \renewcommand{\printchaptername}{\secheadstyle}
-   %  \renewcommand{\cftchapterfont}{\normalfont} 
-   %  \renewcommand{\cftchapterpagefont}{\normalfont\sffamily} 
-   %  \renewcommand{\cftchapterpresnum}{\sffamily} 
-   %  \renewcommand{\cftchapterleader}{\sffamily} 
-   %  \renewcommand{\cftchapterafterpnum}{\cftparfillskip}
-   %  \captiontitlefont{\small}
-   %  %\settocdepth{chapter}
-   %  \maxsecnumdepth{chapter} 
-   %  \setsecnumdepth{chapter}
+% \makechapterstyle{membook}{
+% \setsecheadstyle{\Large\sffamily\bfseries} 
+% \setsubsecheadstyle{\normalsize\sffamily\itshape} 
+% \setaftersubsubsecskip{-1em}
+% \setsubsubsecheadstyle{\small\sffamily\bfseries}
+% \renewcommand{\printchaptername}{\sffamily} 
+% \renewcommand{\chapternamenum}{\sffamily} 
+% \renewcommand{\chapnumfont}{\chaptitlefont\sffamily} 
+% \renewcommand{\printchapternum}{\chapnumfont \thechapter\space} 
+% \renewcommand{\afterchapternum}{} 
+% \renewcommand{\printchaptername}{\secheadstyle}
+% \renewcommand{\cftchapterfont}{\normalfont} 
+% \renewcommand{\cftchapterpagefont}{\normalfont\sffamily} 
+% \renewcommand{\cftchapterpresnum}{\sffamily} 
+% \renewcommand{\cftchapterleader}{\sffamily} 
+% \renewcommand{\cftchapterafterpnum}{\cftparfillskip}
+% \captiontitlefont{\small}
+%  % \settocdepth{chapter}
+% \maxsecnumdepth{chapter} 
+% \setsecnumdepth{chapter}
 
-   %  % reduce skip after section heading
-   %  \setaftersecskip{1.7ex}
-    
-   %  % set name of bibliography to 'references'
-   %  %\renewcommand{\bibname}{\mdseries\Large\scshape\MakeLowercase References}
+%  % reduce skip after section heading
+% \setaftersecskip{1.7ex}
 
-   %  % % Title flush left
-   %  \pretitle{\par\vskip 3em 
-   %      \begin{flushleft}\LARGE\sffamily\bfseries}
-   %  \posttitle{\end{flushleft}\par\vskip 0.5em}
-   %  \preauthor{\begin{flushleft}\normalsize\sffamily\bigskip}
-   %  \postauthor{\end{flushleft}}
-   %  \predate{\begin{flushleft}\normalsize\sffamily}
-   %  \postdate{\end{flushleft}}
+%  % set name of bibliography to 'references'
+%  % \renewcommand{\bibname}{\mdseries\Large\scshape\MakeLowercase References}
 
-   %  % 'abstract' bigger skip from title
-   %  \addto\captionsamerican{\renewcommand{\abstractname}{}}
-   %  \renewcommand{\abstractname}{}
-   %  \renewcommand{\abstracttextfont}{\normalfont\scriptsize}
-   %  \abstractrunin
-   % }
+%  % % Title flush left
+% \pretitle{\par\vskip 3em 
+% \begin{flushleft}\LARGE\sffamily\bfseries}
+%   \posttitle{\end{flushleft}\par\vskip 0.5em}
+% \preauthor{\begin{flushleft}\normalsize\sffamily\bigskip}
+%   \postauthor{\end{flushleft}}
+% \predate{\begin{flushleft}\normalsize\sffamily}
+%   \postdate{\end{flushleft}}
 
-
-%\RequirePackage[usenames,dvipsnames]{color}
-%\RequirePackage{calc}
-%\RequirePackage{color,calc}
-%\newsavebox{\ChpNumBox}
-%\definecolor{ChapBlue}{rgb}{0.00,0.65,0.65}
-%\makeatletter
-% \newcommand*{\thickhrulefill}{%
-%   \leavevmode\leaders\hrule height 1\p@ \hfill \kern \z@}
-% \newcommand*\BuildChpNum[2]{%
-%   \begin{tabular}[t]{@{}c@{}}
-%     \makebox[0pt][c]{#1\strut}  \\[.5ex]
-%     \colorbox{BrickRed}{%
-%       \rule[-10em]{0pt}{0pt}%
-%       \rule{1ex}{0pt}\color{black}#2\strut
-%       \rule{1ex}{0pt}}%
-%   \end{tabular}}
-% \makechapterstyle{BlueBox}{%
-%   \renewcommand{\chapnamefont}{\large\sffamily}
-%   \renewcommand{\chapnumfont}{\Huge\sffamily}
-%   \renewcommand{\chaptitlefont}{\raggedright\Huge\sffamily}
-%   \setlength{\beforechapskip}{20pt}
-%   \setlength{\midchapskip}{26pt}
-%   \setlength{\afterchapskip}{40pt}
-%   \renewcommand{\printchaptername}{\sffamily}
-%   \renewcommand{\chapternamenum}{\sffamily}
-%   \renewcommand{\printchapternum}{%
-%     \sbox{\ChpNumBox}{%
-%       \BuildChpNum{\chapnamefont\@chapapp}%
-%       {\chapnumfont\thechapter}}}
-%   \renewcommand{\printchapternonum}{%
-%     \sbox{\ChpNumBox}{%
-%       \BuildChpNum{\chapnamefont\vphantom{\@chapapp}}%
-%       {\chapnumfont\hphantom{\thechapter}}}}
-% \renewcommand{\afterchapternum}{}
-% \renewcommand{\printchaptertitle}[1]{%
-%   \usebox{\ChpNumBox}\hfill
-%   \parbox[t]{\hsize-\wd\ChpNumBox-1em}{%
-%     \vspace{\midchapskip}%
-%     \thickhrulefill\par
-%     \chaptitlefont ##1\par}}%
-%     \pretitle{\par\vskip 3em 
-%         \begin{flushleft}\LARGE\sffamily\bfseries}
-%     \posttitle{\end{flushleft}\par\vskip 0.5em}
-%     \preauthor{\begin{flushleft}\normalsize\sffamily\bigskip}
-%     \postauthor{\end{flushleft}}
-%     \predate{\begin{flushleft}\normalsize}
-%     \postdate{\end{flushleft}}
-
+%  % 'abstract' bigger skip from title
+% \addto\captionsamerican{\renewcommand{\abstractname}{}}
+% \renewcommand{\abstractname}{}
+% \renewcommand{\abstracttextfont}{\normalfont\scriptsize}
+% \abstractrunin
 % }
 
 
-%%% -------------------------------------------------- 
-%%% Custom styles for headers and footers The chapterstyles above
-%%% style sections/subsections and titles, etc. These pagestyles
-%%% control the running headers and footers. So far there's just one.
-%%% --------------------------------------------------
-   
-%%%
-%%% Basic 
-%%%
+%   \RequirePackage[usenames,dvipsnames]{color}
+%   \RequirePackage{calc}
+%   \RequirePackage{color,calc}
+%   \newsavebox{\ChpNumBox}
+%   \definecolor{ChapBlue}{rgb}{0.00,0.65,0.65}
+%   \makeatletter
+%   \newcommand*{\thickhrulefill}{%
+%   \leavevmode\leaders\hrule height 1\p@ \hfill \kern \z@}
+%   \newcommand*\BuildChpNum[2]{%
+%   \begin{tabular}[t]{@{}c@{}}
+      %       \makebox[0pt][c]{#1\strut}  \\[.5ex]
+      %       \colorbox{BrickRed}{%
+      %       \rule[-10em]{0pt}{0pt}%
+      %       \rule{1ex}{0pt}\color{black}#2\strut
+      %       \rule{1ex}{0pt}}%
+      %     \end{tabular}}
+      %       \makechapterstyle{BlueBox}{%
+      %       \renewcommand{\chapnamefont}{\large\sffamily}
+      %       \renewcommand{\chapnumfont}{\Huge\sffamily}
+      %       \renewcommand{\chaptitlefont}{\raggedright\Huge\sffamily}
+      %       \setlength{\beforechapskip}{20pt}
+      %       \setlength{\midchapskip}{26pt}
+      %       \setlength{\afterchapskip}{40pt}
+      %       \renewcommand{\printchaptername}{\sffamily}
+      %       \renewcommand{\chapternamenum}{\sffamily}
+      %       \renewcommand{\printchapternum}{%
+      %       \sbox{\ChpNumBox}{%
+      %       \BuildChpNum{\chapnamefont\@chapapp}%
+      %       {\chapnumfont\thechapter}}}
+      %       \renewcommand{\printchapternonum}{%
+      %       \sbox{\ChpNumBox}{%
+      %       \BuildChpNum{\chapnamefont\vphantom{\@chapapp}}%
+      %       {\chapnumfont\hphantom{\thechapter}}}}
+      %       \renewcommand{\afterchapternum}{}
+      %       \renewcommand{\printchaptertitle}[1]{%
+      %       \usebox{\ChpNumBox}\hfill
+      %       \parbox[t]{\hsize-\wd\ChpNumBox-1em}{%
+      %       \vspace{\midchapskip}%
+      %       \thickhrulefill\par
+      %       \chaptitlefont ##1\par}}%
+      %       \pretitle{\par\vskip 3em 
+      %       \begin{flushleft}\LARGE\sffamily\bfseries}
+      %       \posttitle{\end{flushleft}\par\vskip 0.5em}
+      %       \preauthor{\begin{flushleft}\normalsize\sffamily\bigskip}
+      %       \postauthor{\end{flushleft}}
+      %       \predate{\begin{flushleft}\normalsize}
+      %       \postdate{\end{flushleft}}
+
+      %       }
+
+
+      %%%         -------------------------------------------------- 
+      %%%         Custom styles for headers and footers The chapterstyles above
+      %%%         style sections/subsections and titles, etc. These pagestyles
+      %%%         control the running headers and footers. So far there's just one.
+      %%%         --------------------------------------------------
+
+      %%%         
+      %%%         Basic 
+      %%%         
 \makepagestyle{kjh}
-%\makeevenfoot{kjh}{\thepage}{}{}
-%\makeoddfoot{kjh}{}{}{\thepage}
-%\makeheadrule{kjh}{\textwidth}{\normalrulethickness}
+      %       \makeevenfoot{kjh}{\thepage}{}{}
+      %       \makeoddfoot{kjh}{}{}{\thepage}
+      %       \makeheadrule{kjh}{\textwidth}{\normalrulethickness}
 \newcommand{\@kjhmarks}{%
   \let\@mkboth\markboth
   \def\chaptermark##1{%
     \markboth{%
       \ifnum \c@secnumdepth >\m@ne
-        \if@mainmatter
-          \thechapter. \ %
-        \fi
+      \if@mainmatter
+      \thechapter. \ %
+      \fi
       \fi
       ##1}{}}
   \def\sectionmark##1{%
@@ -607,122 +677,122 @@
 \makeoddhead{kjh}{}{}{\scshape\thepage}
 
 
-  
-%%%
-%%% RCS in footer 
-%%%
 
-% Make the style for RCS revision control headers and footers
+%%% 
+%%% RCS in footer 
+%%% 
+
+      %       Make the style for RCS revision control headers and footers
 \makepagestyle{kjhrcs}
-% \makeheadrule{kjhrcs}{\textwidth}{\normalrulethickness}
+      %       \makeheadrule{kjhrcs}{\textwidth}{\normalrulethickness}
 \newcommand{\@kjhrcsmarks}{%
   \let\@mkboth\markboth
   \def\chaptermark##1{%
     \markboth{%
       \ifnum \c@secnumdepth >\m@ne
-        \if@mainmatter
-          \thechapter. \ %
-        \fi
+      \if@mainmatter
+      \thechapter. \ %
+      \fi
       \fi
       ##1}{}}
   \def\sectionmark##1{%
     \markright{##1}}
 }
 \makepsmarks{kjhrcs}{\@kjhrcsmarks}
-%\makeevenhead{kjhrcs}{\footnotesize\scshape\leftmark}{}{\scshape\thepage}
-%\makeoddhead{kjhrcs}{}{}{\footnotesize\rightmark\normalsize\ \ \scshape\thepage}
+      %       \makeevenhead{kjhrcs}{\footnotesize\scshape\leftmark}{}{\scshape\thepage}
+      %       \makeoddhead{kjhrcs}{}{}{\footnotesize\rightmark\normalsize\ \ \scshape\thepage}
 \makeevenfoot{kjhrcs}{\texttt{\footnotesize\rcsInfoFile}}{\scshape\thepage}{\footnotesize \emph{Rev} \texttt{\rcsInfoRevision \  \rcsInfoDate}}
 \makeoddfoot{kjhrcs}{\texttt{\footnotesize\rcsInfoFile}}{\scshape\thepage}{\footnotesize \emph{Rev} \texttt{\rcsInfoRevision \ \rcsInfoDate}}
 
 
 
-%%%
+%%% 
 %%% Mercurial rev info in footers 
-%%%
+%%% 
 
-% Make the style for hg revision control headers and footers
+      %       Make the style for hg revision control headers and footers
 \makepagestyle{kjhhg}
-% \makeheadrule{kjhhg}{\textwidth}{\normalrulethickness}
+      %       \makeheadrule{kjhhg}{\textwidth}{\normalrulethickness}
 \newcommand{\@kjhhgmarks}{%
   \let\@mkboth\markboth
   \def\chaptermark##1{%
     \markboth{%
       \ifnum \c@secnumdepth >\m@ne
-        \if@mainmatter
-          \thechapter. \ %
-        \fi
+      \if@mainmatter
+      \thechapter. \ %
+      \fi
       \fi
       ##1}{}}
   \def\sectionmark##1{%
     \markright{##1}}
 }
 \makepsmarks{kjhhg}{\@kjhhgmarks}
-%\makeevenhead{kjhhg}{\footnotesize\scshape\leftmark}{}{\scshape\thepage}
-%\makeoddhead{kjhhg}{}{}{\footnotesize\rightmark\normalsize\ \ \scshape\thepage}
+      %       \makeevenhead{kjhhg}{\footnotesize\scshape\leftmark}{}{\scshape\thepage}
+      %       \makeoddhead{kjhhg}{}{}{\footnotesize\rightmark\normalsize\ \ \scshape\thepage}
 \makeevenfoot{kjhhg}{\texttt{\footnotesize \hgkw{Filename}}}{\scshape\thepage}{\texttt{\footnotesize Rev \hgkw{LastChangedRevision} on \hgfilemonth\ \hgfileday, \hgfileyear}}
 \makeoddfoot{kjhhg}{\texttt{\footnotesize \hgkw{Filename}}}{\scshape\thepage}{\texttt{\footnotesize Rev \hgkw{LastChangedRevision} on \hgfilemonth\ \hgfileday, \hgfileyear}}
 
 
 
-%%%
+%%% 
 %%% Git info in footers; requires vc package 
-%%%
+%%% 
 
-% Make the style for vc-git revision control headers and footers
+      %       Make the style for vc-git revision control headers and footers
 \makepagestyle{kjhgit}
-% \makeheadrule{kjhgit}{\textwidth}{\normalrulethickness}
+      %       \makeheadrule{kjhgit}{\textwidth}{\normalrulethickness}
 \newcommand{\@kjhgitmarks}{%
   \let\@mkboth\markboth
   \def\chaptermark##1{%
     \markboth{%
       \ifnum \c@secnumdepth >\m@ne
-        \if@mainmatter
-          \thechapter. \ %
-        \fi
+      \if@mainmatter
+      \thechapter. \ %
+      \fi
       \fi
       ##1}{}}
   \def\sectionmark##1{%
     \markright{##1}}
 }
 \makepsmarks{kjhgit}{\@kjhgitmarks}
-%\makeevenhead{kjhgit}{\footnotesize\scshape\leftmark}{}{\scshape\thepage}
-%\makeoddhead{kjhgit}{}{}{\footnotesize\rightmark\normalsize\ \ \scshape\thepage}
+      %       \makeevenhead{kjhgit}{\footnotesize\scshape\leftmark}{}{\scshape\thepage}
+      %       \makeoddhead{kjhgit}{}{}{\footnotesize\rightmark\normalsize\ \ \scshape\thepage}
 \makeevenfoot{kjhgit}{}{\scshape\thepage}{\texttt{\footnotesize \gitAbbrevHash{} on \gitAuthorDate{}}}
 \makeoddfoot{kjhgit}{}{\scshape\thepage}{\texttt{\footnotesize \gitAbbrevHash{}  on \gitAuthorDate{}}}
 
 %%% 
 %%% Custom appendix 
-%%%
+%%% 
 
 % % Make the style for headers and footers in the Appendix
-% \makepagestyle{kjhappendix}
-% %\makeevenfoot{kjh}{\thepage}{}{}
-% %\makeoddfoot{kjh}{}{}{\thepage}
-% \makeheadrule{kjhapp}{\textwidth}{\normalrulethickness}
-% \newcommand{\@kjhappmarks}{%
-%   \let\@mkboth\markboth
-%   \def\chaptermark##1{%
-%     \markboth{%
-%       \ifnum \c@secnumdepth >\m@ne
-%         \if@mainmatter
-%           \thechapter. \ %
-%         \fi
-%       \fi
-%       ##1}{}}
-%   \def\sectionmark##1{%
-%     \markright{##1}}
-% }
-% \makepsmarks{kjhappendix}{\@kjhappmarks}
-% \makeevenhead{kjhappendix}{\footnotesize\scshape Appendix}{}{\scshape\thepage}
-% \makeoddhead{kjhappendix}{}{}{\footnotesize Data and Methods for \rightmark\normalsize\ \ \scshape\thepage}
+      %       \makepagestyle{kjhappendix}
+      % %       \makeevenfoot{kjh}{\thepage}{}{}
+      % %       \makeoddfoot{kjh}{}{}{\thepage}
+      %       \makeheadrule{kjhapp}{\textwidth}{\normalrulethickness}
+      %       \newcommand{\@kjhappmarks}{%
+      %       \let\@mkboth\markboth
+      %       \def\chaptermark##1{%
+      %       \markboth{%
+      %       \ifnum \c@secnumdepth >\m@ne
+      %       \if@mainmatter
+      %       \thechapter. \ %
+      %       \fi
+      %       \fi
+      %       ##1}{}}
+      %       \def\sectionmark##1{%
+      %       \markright{##1}}
+      %       }
+      %       \makepsmarks{kjhappendix}{\@kjhappmarks}
+      %       \makeevenhead{kjhappendix}{\footnotesize\scshape Appendix}{}{\scshape\thepage}
+      %       \makeoddhead{kjhappendix}{}{}{\footnotesize Data and Methods for \rightmark\normalsize\ \ \scshape\thepage}
 
-%% Create a command to make a note at the top of the first page describing the
-%% publication status of the paper. 
+      %%       Create a command to make a note at the top of the first page describing the
+      %%       publication status of the paper. 
 \newcommand{\published}[1]{% 
-   \gdef\puB{#1}} 
-   \newcommand{\puB}{} 
-   \renewcommand{\maketitlehooka}{% 
-       \par\noindent\footnotesize \puB} 
+  \gdef\puB{#1}} 
+\newcommand{\puB}{} 
+\renewcommand{\maketitlehooka}{% 
+  \par\noindent\footnotesize \puB} 
 
 \endinput
 

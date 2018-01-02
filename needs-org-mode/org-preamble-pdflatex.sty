@@ -35,17 +35,73 @@
 
 \ProcessOptions
 
+\usepackage{marginnote}
 \RequirePackage[T1]{fontenc}
 \RequirePackage[utf8]{inputenc}
 \DeclareUnicodeCharacter{2032}{$'$}
 %\RequirePackage{fixltx2e}
 \RequirePackage{wrapfig}
 \RequirePackage{rotating}
+%\RequirePackage{caption}
 \RequirePackage{memoir-article-styles}
-\RequirePackage[english]{babel}
+\RequirePackage[greek,english]{babel}
 \RequirePackage[babel]{csquotes}
 \RequirePackage[svgnames]{xcolor}
 \RequirePackage{soul}
+
+%% A new command that allows you to note down ideas or annotations in
+%% the margin of the draft. If you are printing on a stock that is wider
+%% than the final page width, we will go to some length to utilise the
+%% paper that would otherwise be trimmed away, assuming you will not be
+%% trimming the draft. These notes will not be printed when we are not
+%% in draft mode.
+
+
+\ifdraftdoc
+  \newlength{\draftnotewidth}
+  \newlength{\draftnotesignwidth}
+  \if@twoside
+  \newcommand{\draftnote}[1]{\@bsphack%
+  {%% do not interfere with settings for other marginal notes
+  \strictpagecheck%
+  \checkoddpage%
+  \setlength{\draftnotewidth}{\foremargin}%
+  \addtolength{\draftnotewidth}{\trimedge}%
+  \addtolength{\draftnotewidth}{-3\marginparsep}%
+  \linespread{1}
+  \marginparmargin{outer}
+  \ifoddpage
+  \setlength{\marginparwidth}{\draftnotewidth}%
+  \marginpar{\raggedright\textbf{\textit{\HUGE !\ }}\tiny\sffamily\color{red} #1}%
+  \else
+  \setlength{\marginparwidth}{\draftnotewidth}%
+  \settowidth{\draftnotesignwidth}{\textbf{\textit{\HUGE\ !}}}%
+  \addtolength{\draftnotewidth}{-\draftnotesignwidth}%
+  \marginpar{\raggedleft\makebox[0pt][r]{%% hack around
+  \parbox[t]{\draftnotewidth}{%%%%%%%%% funny behaviour
+  \raggedleft\tiny\sffamily\color{red}\hspace{0pt}#1%
+  }}\textbf{\textit{\HUGE\ !}}%
+  }%
+  \fi
+  }\@esphack}
+\else
+  \newcommand{\draftnote}[1]{\@bsphack%
+  {%% do not interfere with settings for other marginal notes
+  \setlength{\draftnotewidth}{\foremargin}%
+  \addtolength{\draftnotewidth}{\trimedge}%
+  \addtolength{\draftnotewidth}{-3\marginparsep}%
+  \setlength{\marginparwidth}{\draftnotewidth}%
+  \linespread{1}
+  \marginpar{\flushleft\textbf{\textit{\HUGE !\ }}\tiny\sffamily\color{red} #1}%
+  }\@esphack}
+\fi
+\else
+  \newcommand{\draftnote}[1]{\@bsphack\@esphack}
+\fi
+
+
+% \newcommand{\draftnote}[1]{%
+%   \marginpar{\raggedright\sffamily\tiny\color{red}{#1}}}
 
 %%% If \RequirePackage[minion]{org-preamble-pdflatex} is set,
 %%% MinionPro and microtype setup (requires full installation of MinionPro font)
@@ -54,15 +110,18 @@
 \ifthenelse{\boolean{@minion}}{
   %\RequirePackage[fullfamily,opticals,footnotefigures]{MinionPro}
   \RequirePackage[footnotefigures]{MinionPro}
-  \RequirePackage[scaled=0.7]{beramono}
+  \RequirePackage[scaled=0.8]{beramono}
   \RequirePackage{microtype}
-  \RequirePackage[osf]{AlegreyaSans}
+  \usepackage[defaultsans,osfigures,scale=0.8]{opensans}
+  %\RequirePackage[osf]{AlegreyaSans}
   \RequirePackage[toc,eqno,enum]{tabfigures} %% use tabular figures in tables, toc, equations
   \renewcommand{\scdefault}{ssc} %% nicer small-caps headings
 }{
-  \RequirePackage{times}
+  %\RequirePackage{times}
   \RequirePackage[config=mt-ptm]{microtype}
-  \RequirePackage[scaled=0.74]{beramono}
+  \RequirePackage[charter,scaled=true,greeklowercase=upright]{mathdesign}
+  \def\sfdefault{SourceSansPro-TLF}
+  \def\SourceSansPro@scale{1.02}
 }
 
 
@@ -77,7 +136,7 @@ pdfpagelabels, bookmarksnumbered]{hyperref}
              citestyle=authoryear-comp,
              uniquename=false,
              hyperref=true,
-             backend=biber, babel=hyphen, bibencoding=inputenc]{biblatex}
+             backend=biber, autolang=hyphen, bibencoding=inputenc]{biblatex}
 
 
 %% Basic bibliography
